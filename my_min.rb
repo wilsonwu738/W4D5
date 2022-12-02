@@ -52,28 +52,25 @@ end
 
 
 # phase 2
-list = [2, 3, -6, 7, -6, 7]
-p largest_sub_sum(list) # => 8 (from [7, -6, 7])
+# list = [2, 3, -6, 7, -6, 7]
+# p largest_sub_sum(list) # => 8 (from [7, -6, 7])
 
 def largest_sub_sum(arr)
     largest = 0
     current = 0
 
     i = 0
-    j = 0
+   
 
     while i < arr.length
-        current = arr[i..j].sum
+        current += arr[i]
         if largest < current
             largest = current
         end
-        j += 1
-
-        if j == arr.length
-            i += 1
-            j = i
+        if current < 0
+          current = 0
         end
-
+        i += 1
     end
     return largest
 end
